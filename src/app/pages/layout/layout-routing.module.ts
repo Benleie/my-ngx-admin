@@ -6,6 +6,7 @@ import { Tab1Component, Tab2Component, TabsComponent } from './tabs/tabs.compone
 import { AccordionComponent } from './accordion/accordion.component';
 import { InfiniteListComponent } from './infinite-list/infinite-list.component';
 import { ListComponent } from './list/list.component';
+import { List2Component } from './list2/list2.component';
 import { StepperComponent } from './stepper/stepper.component';
 
 const routes: Routes = [{
@@ -19,6 +20,10 @@ const routes: Routes = [{
     {
       path: 'list',
       component: ListComponent,
+    },
+    {
+      path: 'list2',
+      component: List2Component,
     },
     {
       path: 'infinite-list',
