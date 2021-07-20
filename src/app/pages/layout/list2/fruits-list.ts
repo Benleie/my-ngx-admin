@@ -11,4 +11,3 @@ export const fruits: string[] = [
     'Oranges',
     'Peaches',
 ];
-  

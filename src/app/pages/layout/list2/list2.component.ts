@@ -4,9 +4,9 @@ import { fruits } from './fruits-list';
 @Component({
   selector: 'ngx-list2',
   templateUrl: './list2.component.html',
-  styleUrls: ['./list2.component.scss']
+  styleUrls: ['./list2.component.scss'],
 })
-export class List2Component{
+export class List2Component {
   fruits = fruits;
 
   users: { name: string, title: string }[] = [
