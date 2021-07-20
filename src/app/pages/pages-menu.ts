@@ -29,6 +29,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/list',
       },
       {
+        title: 'List2',
+        link: '/pages/layout/list2',
+      },
+      {
         title: 'Infinite List',
         link: '/pages/layout/infinite-list',
       },
