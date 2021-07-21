@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fruits } from './fruits-list';
 import { NewsService } from '../news.service';
+import { from } from 'rxjs';
+
 
 @Component({
   selector: 'ngx-list2',
@@ -25,6 +27,17 @@ export class List2Component implements OnInit {
       .subscribe(nextNews => {
         console.log(nextNews)
       });
+    this.fetchData()
+  }
+  fetchData() {
+    // Create an Observable out of a promise
+    const data = from(fetch('assets/data/news.json'));
+    // Subscribe to begin listening for async result
+    data.subscribe({
+      next(response) { console.log(response); },
+      error(err) { console.error('Error: ' + err); },
+      complete() { console.log('Completed'); }
+    });
   }
 
 }
