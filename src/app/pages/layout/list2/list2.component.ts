@@ -21,14 +21,17 @@ export class List2Component implements OnInit {
   ];
 
   constructor(private newsService: NewsService) {}
+
   ngOnInit() {
     console.log('ngOnInit')
     this.newsService.load(0, 3)
       .subscribe(nextNews => {
         console.log(nextNews)
       });
-    this.fetchData()
+    // this.fetchData()
+    this.unsubscribe1()
   }
+
   fetchData() {
     // Create an Observable out of a promise
     const data = from(fetch('assets/data/news.json'));
@@ -39,5 +42,14 @@ export class List2Component implements OnInit {
       complete() { console.log('Completed'); }
     });
   }
+
+  unsubscribe1() {
+    const observable = from([10, 20, 30]);
+    const subscription = observable.subscribe(x => console.log(x));
+    // Later:
+    subscription.unsubscribe();
+  }
+
+
 
 }
