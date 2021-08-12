@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fruits } from './fruits-list';
 import { NewsService } from '../news.service';
-import { from } from 'rxjs';
+import { from, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators'
 
 
 @Component({
@@ -20,6 +21,11 @@ export class List2Component implements OnInit {
     { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
   ];
 
+  testThrottleValue: string = '';
+
+  inputChange$ = new Subject()
+
+
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
@@ -30,6 +36,10 @@ export class List2Component implements OnInit {
       });
     // this.fetchData()
     this.unsubscribe1()
+    this.inputChange$.pipe(debounceTime(1000))
+        .subscribe(() => {
+          console.log(this.testThrottleValue)
+        })
   }
 
   fetchData() {
@@ -48,6 +58,10 @@ export class List2Component implements OnInit {
     const subscription = observable.subscribe(x => console.log(x));
     // Later:
     subscription.unsubscribe();
+  }
+
+  handleInputChange() {
+    console.log(this.testThrottleValue)
   }
 
 
