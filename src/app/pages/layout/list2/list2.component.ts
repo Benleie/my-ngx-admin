@@ -43,6 +43,24 @@ export class List2Component implements OnInit {
     });
   }
 
+  fetchList() {
+    const data = {
+      pageSize: 10,
+      "pageNum": 1,
+      "sortField": "",
+      "order": "",
+      "taskId": "298"
+    }
+    const url = 'http://10.7.192.120:8196/hunt/clueManage/cluePushList'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(data => console.log(data))
+  }
+
   unsubscribe1() {
     const observable = from([10, 20, 30]);
     const subscription = observable.subscribe(x => console.log(x));
