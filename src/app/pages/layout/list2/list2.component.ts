@@ -25,6 +25,7 @@ export class List2Component implements OnInit {
 
   inputChange$ = new Subject()
 
+  colorVisible:boolean = false;
 
   constructor(private newsService: NewsService) {}
 
@@ -37,9 +38,21 @@ export class List2Component implements OnInit {
     // this.fetchData()
     this.unsubscribe1()
     this.inputChange$.pipe(debounceTime(1000))
-        .subscribe(() => {
-          console.log(this.testThrottleValue)
-        })
+      .subscribe(() => {
+        console.log(this.testThrottleValue)
+      })
+  }
+
+  ngAfterContentInit() {
+    debugger;
+  }
+
+  ngAfterContentChecked() {
+    // debugger;
+  }
+
+  ngAfterViewInit() {
+    debugger;
   }
 
   fetchData() {
@@ -56,7 +69,7 @@ export class List2Component implements OnInit {
   fetchList() {
     const data = {
       pageSize: 10,
-      "pageNum": 1,
+      'pageNum': 1,
       "sortField": "",
       "order": "",
       "taskId": "298"
@@ -69,6 +82,10 @@ export class List2Component implements OnInit {
       },
       body: JSON.stringify(data)
     }).then(data => console.log(data))
+  }
+
+  toggleColor() {
+    this.colorVisible = !this.colorVisible;
   }
 
   unsubscribe1() {

@@ -1,3 +1,9 @@
+<div class="navigator">
+  <button (click)="fetchList()">add</button>
+  <input type="text" [(ngModel)]="testThrottleValue" (input)="inputChange$.next()" />
+  <button (click)="toggleColor()">toggle color!</button>
+</div>
+
 <div class="lists row">
   <div class="col-md-12 col-lg-6 col-xxxl-6">
     <nb-card class="list-card">
@@ -8,14 +14,14 @@
             {{ fruit }}
           </nb-list-item>
         </nb-list>
-      </nb-card>
-      <button (click)="fetchList()">add</button>
-    </div>
+      </nb-card-body>
+    </nb-card>
+    
   </div>
 
   <div class="col-md-12 col-lg-6 col-xxxl-6">
     <nb-card class="list-card" size="small">
-      <nb-card-header>Users</nb-card-header>
+      <nb-card-header [ngStyle]="{'color': colorVisible ? 'orange' : '#222b45'}">Users</nb-card-header>
       <nb-list>
         <nb-list-item *ngFor="let user of users">
           <nb-user [name]="user.name" [title]="user.title">
@@ -25,7 +31,5 @@
     </nb-card>
   </div>
 </div>
-<div class="my-house">
-  <input type="text" [(ngModel)]="testThrottleValue" (input)="inputChange$.next()" />
-</div>
+
   
